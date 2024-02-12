@@ -1,0 +1,15 @@
+def digit_sum(n):
+    # Function to calculate the sum of digits
+    return sum(map(int, str(n)))
+
+def number_game(num):
+    while num >= 10:
+        num = digit_sum(num)
+    return num
+
+# Input
+num = int(input())
+result = number_game(num)
+
+# Output
+print(num * result)

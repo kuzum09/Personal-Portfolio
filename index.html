@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Personal Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+			rel="stylesheet" />
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<script type="text/javascript">
+			(function () {
+				emailjs.init("-7Q9zAhLylPZVBRJB");
+			})();
+		</script>
+		<script src="script.js"></script>
+		<style>
+			/* Reset some default styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			/* Font face declarations (you can keep these) */
+			@font-face {
+				font-family: font;
+				src: url("Chango-Regular.ttf");
+			}
+			@font-face {
+				font-family: Avani;
+				src: url("my_font.ttf");
+			}
+
+			/* Base styles for body and navigation */
+			body {
+				background-color: white;
+				color: rgb(20, 83, 138);
+				font-family: "Poppins", sans-serif;
+			}
+			nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				background-color: rgb(76, 199, 233);
+				color: azure;
+				padding: 10px 20px;
+			}
+			nav ul {
+				list-style: none;
+			}
+			nav ul li {
+				display: inline;
+				margin-right: 20px;
+			}
+			nav ul li a {
+				color: azure;
+				text-decoration: none;
+			}
+			nav ul li a:hover {
+				color: rgb(23, 25, 25);
+			}
+
+			/* Right-side content styles */
+			.right {
+				font-size: 1.25rem;
+				text-decoration: none;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+			}
+
+			/* First section styles */
+			.firstSection {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 30px 0;
+				text-align: center;
+				padding: 20px;
+			}
+
+			/* Added typing animation for the text */
+			.leftsection {
+				font-size: 3.5rem;
+				font-family: "font";
+				color: rgb(38, 70, 114);
+				white-space: nowrap;
+				overflow: hidden;
+				border-right: 1px solid #000;
+				animation: typing 3s steps(18) 1s 1 normal both,
+					blink-caret 0.5s step-end infinite;
+			}
+
+			/* Keyframes for typing animation */
+			@keyframes typing {
+				from {
+					width: 0;
+				}
+				to {
+					width: 100%;
+				}
+			}
+
+			/* Keyframes for caret blinking animation */
+			@keyframes blink-caret {
+				from,
+				to {
+					border-color: transparent;
+				}
+				100% {
+					border-color: black;
+				}
+			}
+
+			/* Increase the size of the image */
+			.rightsection img {
+				width: 500px; /* Set a specific width */
+				height: 400px; /* Set a specific height */
+				margin: 50px 0;
+				font-size: large;
+				cursor: pointer;
+			}
+
+			/* Pop-up styles */
+			.popup-container {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.7);
+				justify-content: center;
+				align-items: center;
+				z-index: 999;
+			}
+			.popup-image {
+				max-width: 90%;
+				max-height: 90%;
+			}
+			.close-button {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				font-size: 20px;
+				cursor: pointer;
+				color: white;
+			}
+
+			/* Footer styles */
+			footer {
+				background-color: rgb(76, 199, 233);
+				color: black;
+				padding: 10px 20px;
+				text-align: center;
+			}
+			footer a {
+				color: black;
+				text-decoration: none;
+				margin: 10px;
+			}
+			.social-links {
+				display: flex;
+				align-items: center; /* Center items vertically */
+				justify-content: center; /* Center items horizontally */
+			}
+
+			/* Adjust margins as needed */
+			.kp,
+			.pk,
+			.ku {
+				margin-right: 10px; /* Add some spacing between the icons */
+			}
+
+			/* Optional: Increase the size of the icons */
+			.kp img,
+			.pk img,
+			.ku img {
+				width: 30px;
+				height: auto;
+			}
+
+			footer p {
+				color: black;
+			}
+			.copyright {
+				font-size: 1.2rem; /* Adjust font size as needed */
+				margin-right: 10px; /* Add some spacing between the icons and text */
+				text-align-last: left;
+			}
+
+			/* Media query for small screens */
+			@media (max-width: 767px) {
+				.leftsection {
+					font-size: 1.5rem; /* Adjust the font size for small screens */
+				}
+				.rightsection img {
+					width: 100%; /* Make the image responsive to small screens */
+					max-width: none;
+					height: auto;
+					margin: 20px 0; /* Reduce margin for smaller spacing */
+				}
+			}
+
+			/* Media query for tablets and larger screens */
+			@media (min-width: 768px) {
+				/* Adjust the header layout */
+				nav {
+					padding: 20px 40px;
+				}
+				nav ul li {
+					margin-right: 30px;
+				}
+				.right {
+					font-size: 1.5rem;
+				}
+
+				/* Adjust the"footer- section layout */
+				.firstSection {
+					flex-direction: row;
+					justify-content: space-around;
+					align-items: center;
+					padding: 20px;
+				}
+				.leftsection {
+					font-size: 4rem;
+				}
+				.leftsection .btn {
+					display: inline-block;
+					text-decoration: none;
+					color: #59c4ef;
+					border: 2px solid #59c4ef;
+					padding: 12px 34px;
+					font-size: 23px;
+					background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+					position: relative;
+					cursor: pointer;
+					font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+						sans-serif;
+					border-radius: 10px;
+					box-shadow: 0 2px 4px rgba(210, 231, 236, 0.1); /* Added box-shadow */
+					transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Added transition */
+				}
+
+				.leftsection .btn:hover {
+					background: linear-gradient(to bottom, #59c4ef 0%, #59c4ef 100%);
+					border-color: #e6ebed;
+					color: #fff;
+				}
+
+				.leftsection .buttons {
+					padding: 50px 0;
+				}
+				.rightsection img {
+					max-width: 500px;
+					max-height: 400px;
+				}
+
+				/* Adjust padding and font size for footer links */
+				footer {
+					padding: 20px;
+				}
+				footer a {
+					font-size: 1.2rem;
+					margin: 15px;
+				}
+				.p {
+					margin: 2px;
+				}
+			}
+			main hr {
+				border: 0;
+				background: rgb(17, 75, 161);
+				height: 1.5px;
+				margin: 40px 84px;
+			}
+			.secondSection {
+				max-width: 80vw;
+				margin: auto;
+				height: 28vw;
+			}
+			.secondSection h1 {
+				font-size: 1.9rem;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+			}
+			.text-grey {
+				color: rgb(6, 133, 152);
+			}
+			.secondSection .kbox {
+				background: rgb(19, 16, 16);
+				width: 77vw;
+				height: 2px;
+				margin: 56px 10px;
+				display: flex;
+			}
+			.secondSection .vertical {
+				height: 70px;
+				width: 1.5px;
+				background-color: rgb(19, 16, 16);
+				margin: 0 200px;
+			}
+			.secondSection .vertical-title {
+				position: relative;
+				top: 70px;
+				width: 250px; /* Adjust the width as needed */
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				color: rgb(16, 16, 16);
+				text-align: 10px;
+				padding: 10px;
+				margin: 0 auto; /* Center the titles horizontally */
+			}
+			.secondSection .year {
+				font-size: small;
+				padding: 30px;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				color: black;
+			}
+			.year {
+				margin-top: 100px;
+			}
+
+			footer {
+				background-color: rgb(76, 199, 233);
+				height: 100px;
+			}
+			.footer {
+				display: flex;
+				margin: 23px 122px;
+				justify-content: space-evenly;
+			}
+			.footer ul {
+				list-style: none;
+			}
+			.footer > div {
+				width: 223px;
+			}
+
+			footer .footer-rights {
+				text-align: center;
+				color: gray;
+				padding: 20px 0;
+			}
+			.secondSection .container {
+				display: flex;
+				justify-content: space-around;
+				align-items: flex-start;
+				margin-top: 30px;
+			}
+
+			.secondSection .box {
+				width: 300px;
+				height: 300px;
+				background-color: #d5edf5;
+				border: 2px solid #2980b9;
+				padding: 30px;
+				text-align: center;
+				border-radius: 10px;
+				transition: transform 0.3s ease-in-out;
+			}
+
+			.secondSection .box:hover {
+				transform: translateY(-10px);
+			}
+
+			.secondSection .box h2 {
+				color: black;
+				font-size: 1.2rem;
+				margin-top: 60px;
+				margin-bottom: 20px;
+				font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+					"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+			}
+			.secondSection .box button {
+				display: inline-block;
+				text-decoration: none;
+				color: #59c4ef;
+				border: 2px solid #3db9eb;
+				padding: 4px 4px;
+				font-size: 20px;
+				background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+				position: relative;
+				cursor: pointer;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				border-radius: 10px;
+				box-shadow: 0 2px 4px rgba(210, 231, 236, 0.1); /* Added box-shadow */
+				transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Added transition */
+			}
+
+			.secondSection .button:hover {
+				background: linear-gradient(to bottom, #59c4ef 0%, #59c4ef 100%);
+				border-color: #4dc8f9;
+				color: #fff;
+			}
+			.leftsection .but {
+				padding: 50px 0;
+			}
+			.button {
+				color: #000;
+				text-decoration: none;
+			}
+			.contact-us {
+				width: 80%;
+				margin: auto;
+			}
+			.contact-col {
+				padding: 10px;
+				flex-basis: 48%;
+				margin-bottom: 30px;
+			}
+			.contact-col div {
+				display: flex;
+				align-items: center;
+				margin-bottom: 40px;
+			}
+
+			.contact-col div p {
+				padding: 0;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+			}
+			.contact-col div h5 {
+				font-size: 20px;
+				margin-bottom: 5px;
+				color: #555;
+				font-weight: 400;
+				font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+			}
+			.contact-col input,
+			.contact-col textarea {
+				width: 100%;
+				padding: 15px;
+				margin-bottom: 17px;
+				outline: none;
+				border: 1px solid #ccc;
+			}
+			.secondSection .butto {
+				padding: 8px;
+				margin-bottom: 7px;
+				border-radius: 10px;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				font-size: 18px;
+			}
+			.secondSection .box .butto {
+				display: inline-block;
+				text-decoration: none;
+				color: #59c4ef;
+				border: 2px solid #3db9eb;
+				padding: 4px 4px;
+				font-size: 20px;
+				background: linear-gradient(to bottom, white 0%, #fff 100%);
+				position: relative;
+				cursor: pointer;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				border-radius: 10px;
+				/* box-shadow: 0 2px 4px rgba(210, 231, 236, 0.1); Added box-shadow */
+				/* transition: background-color 0.3s, color 0.3s, border-color 0.3s; Added transition */
+			}
+
+			.secondSection .butto:hover {
+				background: linear-gradient(to bottom, #59c4ef 0%, #59c4ef 100%);
+				border-color: #80d5f7;
+				color: #fff;
+			}
+		</style>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="right">
+					<ul>
+						<li>
+							<a href="index.html" target="_blank">Home</a>
+						</li>
+						<li>
+							<a href="https://github.com/kuzum09" target="_blank">Projects</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<section class="firstSection">
+				<!-- Wrapped the text in a div for animation -->
+				<div class="leftsection">
+					<div class="animate-text">Hey!! I am Kusum</div>
+					<div class="buttons">
+						<!-- Changed button to anchor element -->
+						<a
+							class="btn"
+							href="C:\Users\Asus\Desktop\Git Projects\personal portfolio\Resume.pdf"
+							download="Kusum_Resume.pdf"
+							target="_blank"
+							>Download Resume <i class="fas fa-file-pdf"></i>
+						</a>
+					</div>
+				</div>
+				<div class="rightsection">
+					<img src="final.png" alt="image" onclick="openPopup()" />
+				</div>
+			</section>
+
+			<!-- Pop-up container -->
+			<div class="popup-container" id="popup-container">
+				<!-- Close button -->
+				<span class="close-button" onclick="closePopup()">X</span>
+				<!-- Image to display in the pop-up -->
+				<img src="final.png" alt="Pop-up image" class="popup-image" />
+			</div>
+			<hr />
+			<section class="secondSection">
+				<span class="text-grey">What I Have done so far</span>
+				<h1>Qulification</h1>
+				<div class="kbox">
+					<div class="vertical">
+						<div class="vertical-title">
+							10th Krishna Public School <br />
+							<i class="fa fa-calendar"></i> <span class="year">2019-2020</span>
+						</div>
+					</div>
+					<div class="vertical">
+						<div class="vertical-title">
+							12th Krishna Public School<br />
+							<i class="fa fa-calendar"></i><span class="year">2021-2022</span>
+						</div>
+					</div>
+					<div class="vertical">
+						<div class="vertical-title">
+							B-tech [Data Science And Artificial Intelegence] IIIT Naya
+							Raipur<br />
+
+							<i class="fa fa-calendar"></i><span class="year">2022-2026</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="secondSection">
+				<span class="text-grey">My Technical Finesse</span>
+				<h1>Projects</h1>
+				<div class="container">
+					<div class="box">
+						<h2>Human Activity Recognition</h2>
+						<p>
+							<button>
+								<div class="but">
+									<a
+										class="button"
+										href="https://github.com/kuzum09"
+										download="Kusum_Resume.pdf"
+										target="_blank"
+										>Git Repositories<i class="fab fa-github"></i>
+									</a>
+								</div>
+							</button>
+						</p>
+					</div>
+					<div class="box">
+						<h2>Cryptocurrency Price Predictor</h2>
+						<p>
+							<button>
+								<div class="but">
+									<a
+										class="button"
+										href="https://github.com/kuzum09/Crypto_Price_Predictor"
+										target="_blank"
+										>Git Repositories<i class="fab fa-github"></i>
+									</a>
+								</div>
+							</button>
+						</p>
+					</div>
+					<div class="box">
+						<h2>Video Game Sales Analysis</h2>
+						<p>
+							<button>
+								<div class="but">
+									<a
+										class="button"
+										href="https://github.com/kuzum09/Video_Games_Sales_Analysis"
+										target="_blank"
+										>Git Repositories<i class="fab fa-github"></i>
+									</a>
+								</div>
+							</button>
+						</p>
+					</div>
+					<div class="box">
+						<h2>TDR Based Soil Moisture Sensor</h2>
+						<p>
+							<button>
+								<div class="but">
+									<a
+										class="button"
+										href="https://github.com/kuzum09"
+										target="_blank"
+										>Git Repositories <i class="fab fa-github"></i>
+									</a>
+								</div>
+							</button>
+						</p>
+					</div>
+				</div>
+			</section>
+			<section class="secondSection">
+				<span class="text-grey">Know More About Me</span>
+				<h1>Contact Me</h1>
+				<div class="contact-col">
+					<form>
+						<input type="text" id="name" placeholder="Your Name" required />
+						<input type="email" id="email" placeholder="Email id" required />
+						<input type="subject" id="subject" placeholder="Subject" required />
+						<textarea
+							id="message"
+							rows="4"
+							placeholder="Write me a message"></textarea>
+						<button class="butto" type="button" onclick="sendmail()">
+							Send <i class="fa-solid fa-paper-plane"></i>
+						</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<div class="footer">
+				<div class="footer-first"></div>
+				<h3>Kusum's Devloper Portfolio</h3>
+				<p></p>
+				<div class="icons">
+					<i class="fab fa-facebook"></i>
+					<i class="fab fa-twitter"></i>
+					<i class="fab fa-linkedin"></i>
+					<i class="fab fa-instagram"></i>
+				</div>
+				<p>Made with <i class="far fa-heart"></i> Kusum Patel</p>
+			</div>
+			<div class="footer-rights">
+				Copyright &#169; kusumportfolio.com | All rights reserved
+			</div>
+		</footer>
+		<script>
+			// Function to open the pop-up
+			function openPopup() {
+				const popupContainer = document.getElementById("popup-container");
+				popupContainer.style.display = "flex";
+			}
+
+			// Function to close the pop-up
+			function closePopup() {
+				const popupContainer = document.getElementById("popup-container");
+				popupContainer.style.display = "none";
+			}
+		</script>
+		<script>
+			function sendmail() {
+				let parms = {
+					name: document.getElementById("name").value,
+					email: document.getElementById("email").value,
+					subject: document.getElementById("subject").value,
+					message: document.getElementById("message").value,
+				};
+				emailjs
+					.send("service_egktguy", "template_s4l9zsq", parms)
+					.then(function (response) {
+						console.log("Sent successfuly:", response);
+						alert("Email Sent!!");
+						location.reload();
+					})
+					.catch(function (error) {
+						console.log("Failed to send:", error);
+					});
+			}
+		</script>
+	</body>
+</html>
